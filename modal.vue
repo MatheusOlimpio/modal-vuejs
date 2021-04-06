@@ -1,0 +1,67 @@
+<template>
+  <div>
+    <button @click="activeModal = !activeModal">Abrir Modal</button>
+    <transition name="trans-modal">
+      <section v-if="activeModal" class="modal">
+        <div class="modal-container">
+          <div class="modal-header">
+            <h1>Modal</h1>
+            <span class="modal-close" @click="activeModal = false">X</span>
+          </div>
+          <div class="modal-body">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur voluptatum nam facilis reiciendis eius, natus, exercitationem, repellendus numquam nobis illum quam quos placeat omnis minima et iusto nihil at tempora!
+          </div>
+          <div class="modal-footer"></div>
+        </div>
+      </section>
+    </transition>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      activeModal: false
+    }
+  }
+}
+</script>
+
+<style>
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(1, 1,1, .5);
+}
+.modal-container {
+  padding: 20px;
+  background: white;
+  width: 500px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-close {
+  font-weight: bold;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 1.5rem;
+}
+
+
+.trans-modal-active {
+  transition: .3s;
+  opacity: 1;
+}
+</style>

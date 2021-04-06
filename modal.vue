@@ -1,8 +1,8 @@
 <template>
   <div>
-    <button @click="activeModal = !activeModal">Abrir Modal</button>
+    <button @click="activeModal = true">Abrir Modal</button>
     <transition name="trans-modal">
-      <section v-if="activeModal" class="modal">
+      <section v-if="activeModal" class="modal" @click="clickForaModal">
         <div class="modal-container">
           <div class="modal-header">
             <h1>Modal</h1>
@@ -23,6 +23,13 @@ export default {
   data() {
     return {
       activeModal: false
+    }
+  },
+  methods: {
+    clickForaModal(event) {
+      if(event.target === event.currentTarget) {
+        this.activeModal = false;
+      }
     }
   }
 }
@@ -58,7 +65,6 @@ export default {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 1.5rem;
 }
-
 
 .trans-modal-active {
   transition: .3s;
